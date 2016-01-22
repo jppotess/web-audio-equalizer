@@ -110,6 +110,11 @@ gulp.task("babel", function() {
     .pipe(reload({stream:true}));
 })
 
+//Library
+gulp.task('vendor', function() {
+    return gulp.src("src/vendor/**/*.*", {base: 'src'})
+    .pipe(gulp.dest("app/"));
+})
 
 // Clean Task
 gulp.task('cleanFull', function(callback) {
@@ -127,7 +132,7 @@ gulp.task('clean', function(callback){
 // Build Task
 gulp.task('build', function(callback){
     runSequence('clean',
-        ['jade', 'sass', 'babel', 'images', 'fonts'],
+        ['jade', 'sass', 'babel', 'images', 'fonts', 'vendor'],
         callback
     )
 })
