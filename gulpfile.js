@@ -144,6 +144,7 @@ gulp.task('watch', ['build'], function() {
     gulp.watch('src/scripts/**/*.js', ['babel']);
     gulp.watch('src/**/*.jade', ['jade']);
     // gulp.watch('src/templates/**/*.html', ['html']);
+    gulp.watch('src/vendor/**/*.*', ['vendor']);
 })
 
 
