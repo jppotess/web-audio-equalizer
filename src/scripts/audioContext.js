@@ -1,5 +1,3 @@
-"use strict";
-
 // audio Context
 
 var audioContext = new (window.AudioContext || window.webkitAudioContext)();
@@ -13,45 +11,34 @@ function getData() {
 
   var request = new XMLHttpRequest();
 
-  request.open('GET', '../vendor/music/home.m4a', true);
+  request.open('GET', '../vendor/music/home.m4a', true)
   request.responseType = 'arraybuffer';
 
-  request.onload = function () {
+  request.onload = function() {
 
     var audioData = request.response;
 
-    audioContext.decodeAudioData(audioData, function (buffer) {
+    audioContext.decodeAudioData(audioData, function(buffer) {
       source.buffer = buffer;
 
       source.connect(audioContext.destination);
       source.loop = true;
-    }, function (e) {
-      "Error with decoding audio data: " + e.err;
-    });
-  };
+    },function(e){"Error with decoding audio data: " + e.err});
+
+  }
   request.send();
 }
 
 // Set Play and Pause(Stop) buttons
 
-play.onclick = function () {
+play.onclick = function() {
   getData();
   source.start(0);
   play.setAttribute('disabled', 'disabled');
-};
+}
 
-stop.onclick = function () {
+stop.onclick = function() {
   source.stop(0);
   play.removeAttribute('disabled');
-};
-'use strict';
+}
 
-window.Vue = Vue;
-
-new Vue({
-  el: '#app',
-  data: {
-    message: 'world'
-  }
-});
-//# sourceMappingURL=scripts.min.js.map
