@@ -53,7 +53,7 @@ function getData() {
       var times = new Uint8Array(analyser.frequencyBinCount);
 
 
-
+        // wait until buffer loaded
         if(delayCount == 0 || delayCount == delay) {
           analyser.getByteFrequencyData(times);
 
