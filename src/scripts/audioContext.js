@@ -27,6 +27,29 @@ function getData() {
 
   var request = new XMLHttpRequest();
 
+
+  request.addEventListener("progress", updateProgress);
+  request.addEventListener("load", transferComplete);
+  request.addEventListener("error", transferFailed);
+  request.addEventListener("abour", transferCanceled);
+
+  function updateProgress() {
+    console.log("update Progress");
+  }
+
+  function transferComplete() {
+    console.log("transfer Complete");
+  }
+
+  function transferFailed() {
+    console.log("transfer failed");
+  }
+
+  function transferCanceled() {
+    console.log("transfer cancelled");
+  }
+
+
   request.open('GET', '../vendor/music/home.m4a', true)
   request.responseType = 'arraybuffer';
 
