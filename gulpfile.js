@@ -116,16 +116,9 @@ gulp.task('vendor', function() {
     .pipe(gulp.dest("app/"));
 })
 
-// Clean Task
-gulp.task('cleanFull', function(callback) {
-    del('app');
-    return cache.clearAll(callback);
-})
-
-
 // Clean Task - except images
-gulp.task('clean', function(callback){
-    del(['app/**/*', '!app/images', '!app/images/**/*'], callback)
+gulp.task('clean', function(){
+    del('app')
 })
 
 
